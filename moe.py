@@ -9,6 +9,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
+class SwiGLU(nn.Module):
+    def forward(self, x):
+        x, gate = x.chunk(2, dim=-1)
+        return F.silu(gate) * x
+
+
 
 class MoELayer(nn.Module):
 	def __init__(self, input_dim, output_dim, num_experts, sel_experts, act_fn="sigmoid"):
@@ -21,6 +27,7 @@ class MoELayer(nn.Module):
 		
 		self.experts = nn.Sequential(
 					nn.Linear(input_dim, output_dim * num_experts),
+					# SwiGLU(),
 					Rearrange('b t (e d) -> b t e d', d = input_dim, e=num_experts)
 				)
 		

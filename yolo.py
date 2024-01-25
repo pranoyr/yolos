@@ -8,8 +8,7 @@ from agent_attention import AgentAttention
 from switchhead_attention import SwitchHeadAttention
 from torch.nn import functional as F
 import time
-
-
+from moe import MoELayer
 
 
 
@@ -31,6 +30,7 @@ class GEGLU(nn.Module):
 	def forward(self, x):
 		x, gate = x.chunk(2, dim=-1)
 		return gate * F.gelu(x)
+
 
 
 class FeedForward(nn.Module):
@@ -66,8 +66,9 @@ class EncoderLayer(nn.Module):
 	def __init__(self, dim, n_heads, d_head, dropout):
 		super().__init__()
 
-		self.self_attn = SwitchHeadAttention(dim, n_heads, d_head, dropout=dropout)
-		self.feed_forward = FeedForward(dim)
+		self.self_attn = SoftmaxAttention(dim, n_heads, d_head, dropout=dropout)
+		# self.feed_forward = FeedForward(dim)
+		self.moe = MoELayer(input_dim=dim,  output_dim=dim, num_experts=6, sel_experts=3)
 		self.norm1 = nn.LayerNorm(dim)
 		self.norm2 = nn.LayerNorm(dim)
 		
@@ -81,7 +82,8 @@ class EncoderLayer(nn.Module):
 		x_norm = self.norm2(x)
 
 		# feed forward
-		fc_out = self.feed_forward(x_norm)
+		# fc_out = self.feed_forward(x_norm)
+		fc_out = self.moe(x_norm)
 
 		# ADD
 		x = fc_out + x
@@ -137,10 +139,6 @@ class YoloS(nn.Module):
 		# transformer encoder
 		x = self.encoder(x)
 
-		# get the class token output
-		# x = x[:, 0]
-		# x = self.final_fc(x)
-
 		# get the detection tokens output  , last 100 tokens
 		dets = x[:, -self.max_dets:, :]
   
@@ -149,18 +147,16 @@ class YoloS(nn.Module):
 		return dets
 
 
+device = torch.device('mps')
+
+model = YoloS(dim=512, image_size=512, patch_size=32, n_heads=8, d_head=64, depth=6, max_dets=100).to(device)
 
 
-model = YoloS(dim=512, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=2, max_dets=100)
-
-
-imgs = torch.randn(2, 3, 512, 512)
+imgs = torch.randn(2, 3, 512, 512).to(device)
 dets = torch.randn(2, 10, 5)  # batch_size, num_dets, 5
 
-
-while True:
-	start = time.time()
-	dets =  model(imgs)
-	print("FPS: ", 1.0 / (time.time() - start))
+output = model(imgs)
+print(output.shape) # (b, timesteps, dim)
+	
 
 	
