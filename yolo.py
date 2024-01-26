@@ -316,9 +316,9 @@ class EncoderLayer(nn.Module):
 
 
 
-class YoloS(nn.Module):
+class ViT(nn.Module):
 	def __init__(self, dim, image_size=256, patch_size = 64, n_heads = 8, d_head = 64, depth = 6, max_dets = 100, num_classes = 10):
-		super(YoloS, self).__init__()
+		super(ViT, self).__init__()
 		
 		self.dim = dim
 		self.patch_size = patch_size
@@ -351,11 +351,8 @@ class YoloS(nn.Module):
 			nn.ReLU()
 		)
 
-
 		self.class_embed = nn.Linear(dim, num_classes)
 		
-
-
 	def forward(self, x):
 		# (batch_size, channels, height, width) --> (batch_size, timesteps, features)
 		x = self.to_patch_embedding(x)
@@ -379,36 +376,39 @@ class YoloS(nn.Module):
 		return boxes, logits
 
 
-device = torch.device('cpu')
 
-model = YoloS(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2).to(device)
+class YoloS(torch.nn.Module):
+	def __init__(self, dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=10):
+		super(YoloS, self).__init__()
 
-imgs = torch.randn(2, 3, 512, 512).to(device)
+		self.model = ViT(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2)
 
-boxes, logits = model(imgs)
+		self.matcher = build_matcher()
+		weight_dict = {'loss_ce': 1, 'loss_bbox': 1}
+		weight_dict['loss_giou'] = 1
+
+		losses = ['labels', 'boxes', 'cardinality']
+		self.criterion = SetCriterion(num_classes, matcher=self.matcher, weight_dict=weight_dict,
+							eos_coef=1, losses=losses)
+		
+	def forward(self, imgs, targets):	
+		boxes , logits = self.model(imgs)
+		outputs = {"pred_logits": logits, "pred_boxes": boxes}
+	
+		loss = self.criterion(outputs, targets)
+
+		return loss
 
 
-# # target
-outputs = {"pred_logits": logits, "pred_boxes": boxes}
-
-
+# imgs
+imgs = torch.randn(2, 3, 512, 512)
+# target
 targets = [{"labels": torch.randint(0, 10, (5,)), "boxes": torch.randint(0, 10, (5, 4)).float()} for _ in range(2)]
 
-
-matcher = build_matcher()
-indices = matcher(outputs, targets)
-
-losses = ['labels', 'boxes', 'cardinality']
-
-num_classes = 10
-weight_dict = {'loss_ce': 1, 'loss_bbox': 1}
-weight_dict['loss_giou'] = 1
-criterion = SetCriterion(num_classes, matcher=matcher, weight_dict=weight_dict,
-							eos_coef=1, losses=losses)
-
-loss = criterion(outputs, targets)
-
+model = YoloS(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=10)
+loss = model(imgs, targets)
 print(loss)
+
 
 
 	
