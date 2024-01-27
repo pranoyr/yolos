@@ -1,0 +1,39 @@
+INFO:root:Train dataset size: 118287
+INFO:root:Val dataset size: 5000
+INFO:root:Number of iterations per epoch: 14786
+INFO:root:Total training iterations: 2957200
+  0%|                                                                                                                                              | 0/14786 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/pranoy/code/yolos/main.py", line 44, in <module>
+    trainer.train()
+  File "/home/pranoy/code/yolos/trainer.py", line 125, in train
+    loss = self.model(img, target)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/code/yolos/yolo.py", line 423, in forward
+    boxes , logits = self.model(imgs)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/code/yolos/yolo.py", line 386, in forward
+    x = self.to_patch_embedding(x)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/einops/layers/torch.py", line 14, in forward
+    return apply_for_scriptable_torch(self._recipe, input, reduction_type='rearrange')
+  File "/home/pranoy/cv/lib/python3.10/site-packages/einops/_torch_specific.py", line 77, in apply_for_scriptable_torch
+    _reconstruct_from_shape_uncached(recipe, backend.shape(tensor))
+  File "/home/pranoy/cv/lib/python3.10/site-packages/einops/_torch_specific.py", line 66, in shape
+    return x.shape
+AttributeError: 'NestedTensor' object has no attribute 'shape'
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])
+torch.Size([8, 3, 512, 512])

@@ -1,0 +1,11 @@
+INFO:root:Train dataset size: 118287
+INFO:root:Val dataset size: 5000
+INFO:root:Number of iterations per epoch: 14786
+INFO:root:Total training iterations: 2957200
+  0%|                                                                                                                                              | 0/14786 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/pranoy/code/yolos/main.py", line 44, in <module>
+    trainer.train()
+  File "/home/pranoy/code/yolos/trainer.py", line 119, in train
+    img = img.to(self.device)
+AttributeError: 'tuple' object has no attribute 'to'

@@ -1,0 +1,153 @@
+2024-01-27 23:33:42,715 INFO    MainThread:1224100 [internal.py:wandb_internal():90] W&B internal server running at pid: 1224100, started at: 2024-01-27 23:33:42.715662
+2024-01-27 23:33:42,716 INFO    WriterThread:1224100 [datastore.py:open_for_write():75] open: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/run-1r454ac9.wandb
+2024-01-27 23:33:42,717 DEBUG   SenderThread:1224100 [sender.py:send():236] send: header
+2024-01-27 23:33:42,717 DEBUG   SenderThread:1224100 [sender.py:send():236] send: run
+2024-01-27 23:33:43,098 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: check_version
+2024-01-27 23:33:43,101 INFO    SenderThread:1224100 [dir_watcher.py:__init__():216] watching files in: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files
+2024-01-27 23:33:43,101 INFO    SenderThread:1224100 [sender.py:_start_run_threads():815] run started: 1r454ac9 with start time 1706378622
+2024-01-27 23:33:43,101 DEBUG   SenderThread:1224100 [sender.py:send():236] send: summary
+2024-01-27 23:33:43,101 INFO    SenderThread:1224100 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-27 23:33:43,101 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: check_version
+2024-01-27 23:33:43,233 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: run_start
+2024-01-27 23:33:43,260 DEBUG   HandlerThread:1224100 [meta.py:__init__():35] meta init
+2024-01-27 23:33:43,262 DEBUG   HandlerThread:1224100 [meta.py:__init__():49] meta init done
+2024-01-27 23:33:43,262 DEBUG   HandlerThread:1224100 [meta.py:probe():209] probe
+2024-01-27 23:33:43,273 DEBUG   HandlerThread:1224100 [meta.py:_setup_git():199] setup git
+2024-01-27 23:33:43,278 DEBUG   HandlerThread:1224100 [meta.py:_setup_git():206] setup git done
+2024-01-27 23:33:43,278 DEBUG   HandlerThread:1224100 [meta.py:_save_pip():53] save pip
+2024-01-27 23:33:43,279 DEBUG   HandlerThread:1224100 [meta.py:_save_pip():67] save pip done
+2024-01-27 23:33:43,280 DEBUG   HandlerThread:1224100 [meta.py:probe():247] probe done
+2024-01-27 23:33:43,327 DEBUG   SenderThread:1224100 [sender.py:send():236] send: files
+2024-01-27 23:33:43,327 INFO    SenderThread:1224100 [sender.py:_save_file():952] saving file wandb-metadata.json with policy now
+2024-01-27 23:33:43,330 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: stop_status
+2024-01-27 23:33:43,330 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: stop_status
+2024-01-27 23:33:43,700 DEBUG   SenderThread:1224100 [sender.py:send():236] send: telemetry
+2024-01-27 23:33:43,815 DEBUG   SenderThread:1224100 [sender.py:send():236] send: telemetry
+2024-01-27 23:33:44,102 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_created():269] file/dir created: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/output.log
+2024-01-27 23:33:44,103 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_created():269] file/dir created: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-metadata.json
+2024-01-27 23:33:44,103 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_created():269] file/dir created: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/requirements.txt
+2024-01-27 23:33:44,103 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_created():269] file/dir created: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-summary.json
+2024-01-27 23:33:44,228 INFO    Thread-11 :1224100 [upload_job.py:push():138] Uploaded file /tmp/tmp16x041mgwandb/26rk2ts5-wandb-metadata.json
+2024-01-27 23:33:45,846 DEBUG   SenderThread:1224100 [sender.py:send():236] send: exit
+2024-01-27 23:33:45,847 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:45,847 INFO    SenderThread:1224100 [sender.py:send_exit():372] handling exit code: 1
+2024-01-27 23:33:45,847 INFO    SenderThread:1224100 [sender.py:send_exit():374] handling runtime: 2
+2024-01-27 23:33:45,847 INFO    SenderThread:1224100 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-27 23:33:45,847 INFO    SenderThread:1224100 [sender.py:send_exit():380] send defer
+2024-01-27 23:33:45,847 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:45,848 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,848 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 0
+2024-01-27 23:33:45,848 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,848 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 0
+2024-01-27 23:33:45,848 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 1
+2024-01-27 23:33:45,848 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,848 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 1
+2024-01-27 23:33:45,934 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,934 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 1
+2024-01-27 23:33:45,934 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 2
+2024-01-27 23:33:45,934 DEBUG   SenderThread:1224100 [sender.py:send():236] send: stats
+2024-01-27 23:33:45,935 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,935 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 2
+2024-01-27 23:33:45,935 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,935 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 2
+2024-01-27 23:33:45,935 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 3
+2024-01-27 23:33:45,935 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,935 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 3
+2024-01-27 23:33:45,935 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,935 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 3
+2024-01-27 23:33:45,935 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 4
+2024-01-27 23:33:45,935 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,935 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 4
+2024-01-27 23:33:45,936 DEBUG   SenderThread:1224100 [sender.py:send():236] send: summary
+2024-01-27 23:33:45,936 INFO    SenderThread:1224100 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-27 23:33:45,936 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,936 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 4
+2024-01-27 23:33:45,936 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 5
+2024-01-27 23:33:45,936 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:45,936 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 5
+2024-01-27 23:33:45,936 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:45,937 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 5
+2024-01-27 23:33:45,948 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:46,102 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/output.log
+2024-01-27 23:33:46,102 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-summary.json
+2024-01-27 23:33:46,299 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 6
+2024-01-27 23:33:46,300 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:46,300 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:46,300 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 6
+2024-01-27 23:33:46,300 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:46,300 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 6
+2024-01-27 23:33:46,300 INFO    SenderThread:1224100 [dir_watcher.py:finish():353] shutting down directory watcher
+2024-01-27 23:33:46,401 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,102 INFO    Thread-7  :1224100 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/config.yaml
+2024-01-27 23:33:47,103 INFO    SenderThread:1224100 [dir_watcher.py:finish():383] scan: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files
+2024-01-27 23:33:47,103 INFO    SenderThread:1224100 [dir_watcher.py:finish():397] scan save: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/output.log output.log
+2024-01-27 23:33:47,103 INFO    SenderThread:1224100 [dir_watcher.py:finish():397] scan save: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-metadata.json wandb-metadata.json
+2024-01-27 23:33:47,103 INFO    SenderThread:1224100 [dir_watcher.py:finish():397] scan save: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/requirements.txt requirements.txt
+2024-01-27 23:33:47,105 INFO    SenderThread:1224100 [dir_watcher.py:finish():397] scan save: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/config.yaml config.yaml
+2024-01-27 23:33:47,106 INFO    SenderThread:1224100 [dir_watcher.py:finish():397] scan save: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-summary.json wandb-summary.json
+2024-01-27 23:33:47,106 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 7
+2024-01-27 23:33:47,106 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,106 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:47,107 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 7
+2024-01-27 23:33:47,108 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:47,109 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 7
+2024-01-27 23:33:47,109 INFO    SenderThread:1224100 [file_pusher.py:finish():171] shutting down file pusher
+2024-01-27 23:33:47,207 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,208 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,308 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,309 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,409 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,409 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,510 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,510 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,611 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,611 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,712 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,712 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,813 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,813 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:47,914 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:47,914 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,015 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,016 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,116 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,117 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,127 INFO    Thread-15 :1224100 [upload_job.py:push():138] Uploaded file /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/wandb-summary.json
+2024-01-27 23:33:48,133 INFO    Thread-13 :1224100 [upload_job.py:push():138] Uploaded file /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/requirements.txt
+2024-01-27 23:33:48,139 INFO    Thread-12 :1224100 [upload_job.py:push():138] Uploaded file /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/output.log
+2024-01-27 23:33:48,140 INFO    Thread-14 :1224100 [upload_job.py:push():138] Uploaded file /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/files/config.yaml
+2024-01-27 23:33:48,218 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,218 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,318 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,319 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,340 INFO    Thread-6 (_thread_body):1224100 [sender.py:transition_state():393] send defer: 8
+2024-01-27 23:33:48,341 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:48,341 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 8
+2024-01-27 23:33:48,341 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:48,341 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 8
+2024-01-27 23:33:48,420 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,620 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 9
+2024-01-27 23:33:48,621 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,621 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:48,621 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 9
+2024-01-27 23:33:48,621 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:48,622 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 9
+2024-01-27 23:33:48,622 INFO    SenderThread:1224100 [sender.py:transition_state():393] send defer: 10
+2024-01-27 23:33:48,622 DEBUG   SenderThread:1224100 [sender.py:send():236] send: final
+2024-01-27 23:33:48,622 DEBUG   SenderThread:1224100 [sender.py:send():236] send: footer
+2024-01-27 23:33:48,622 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: defer
+2024-01-27 23:33:48,622 INFO    HandlerThread:1224100 [handler.py:handle_request_defer():163] handle defer: 10
+2024-01-27 23:33:48,623 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: defer
+2024-01-27 23:33:48,623 INFO    SenderThread:1224100 [sender.py:send_request_defer():389] handle sender defer: 10
+2024-01-27 23:33:48,722 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: poll_exit
+2024-01-27 23:33:48,722 DEBUG   SenderThread:1224100 [sender.py:send_request():250] send_request: poll_exit
+2024-01-27 23:33:48,722 INFO    SenderThread:1224100 [file_pusher.py:join():176] waiting for file pusher
+2024-01-27 23:33:49,475 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: sampled_history
+2024-01-27 23:33:49,475 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: get_summary
+2024-01-27 23:33:49,475 DEBUG   HandlerThread:1224100 [handler.py:handle_request():140] handle_request: shutdown
+2024-01-27 23:33:49,476 INFO    HandlerThread:1224100 [handler.py:finish():806] shutting down handler
+2024-01-27 23:33:49,622 INFO    WriterThread:1224100 [datastore.py:close():279] close: /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/run-1r454ac9.wandb
+2024-01-27 23:33:50,374 INFO    SenderThread:1224100 [sender.py:finish():1114] shutting down sender
+2024-01-27 23:33:50,374 INFO    SenderThread:1224100 [file_pusher.py:finish():171] shutting down file pusher
+2024-01-27 23:33:50,374 INFO    SenderThread:1224100 [file_pusher.py:join():176] waiting for file pusher
+2024-01-27 23:33:50,376 INFO    MainThread:1224100 [internal.py:handle_exit():80] Internal process exited

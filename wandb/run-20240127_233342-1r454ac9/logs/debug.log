@@ -1,0 +1,172 @@
+2024-01-27 23:33:42,371 INFO    MainThread:1223922 [wandb_setup.py:_flush():76] Configure stats pid to 1223922
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_setup.py:_flush():76] Loading settings from /home/pranoy/.config/wandb/settings
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_setup.py:_flush():76] Loading settings from /home/pranoy/code/yolos/wandb/settings
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'main.py', 'program': '/home/pranoy/code/yolos/main.py'}
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_init.py:_log_setup():461] Logging user logs to /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/logs/debug.log
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_init.py:_log_setup():462] Logging internal logs to /home/pranoy/code/yolos/wandb/run-20240127_233342-1r454ac9/logs/debug-internal.log
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_init.py:init():495] calling init triggers
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_init.py:init():498] wandb.init called with sweep_config: {}
+config: {'_metadata': ContainerMetadata(ref_type=typing.Any, object_type=<class 'dict'>, optional=True, key=None, flags={}, flags_root=False, resolver_cache=defaultdict(<class 'dict'>, {}), key_type=typing.Any, element_type=typing.Any), '_parent': None, '_flags_cache': {'struct': None}, '_content': {'experiment': {'name': 'run1', 'project_name': 'Yolo', 'output_folder': 'outputs/yolo', 'max_train_examples': 1000000, 'save_every': 1000, 'eval_every': 500, 'sample_every': 1000, 'log_every': 100, 'log_level': 'info', 'resume_path_from_checkpoint': None}, 'model': {'name': 'yolo', 'dim': 512, 'transformer': {'dim': 512, 'patch_size': 8, 'n_heads': 8, 'd_head': 64, 'depth': 8, 'dropout': 0.1, 'mlp_dim': 2048}}, 'dataset': {'name': 'coco', 'params': {'train_path': '/media/pranoy/UBUNTU_ROOT/home/pranoy/datasets/coco2017', 'val_path': None, 'num_workers': 4, 'pin_memory': True, 'batch_size': 8, 'persistent_workers': True, 'shuffle': True, 'train_test_split': 0.9}, 'preprocessing': {'resolution': 512, 'center_crop': False, 'random_flip': False, 'random_crop': False}}, 'optimizer': {'name': 'adamw', 'params': {'learning_rate': 0.0001, 'beta1': 0.9, 'beta2': 0.999, 'weight_decay': 0.0, 'epsilon': 1e-08}}, 'lr_scheduler': {'scheduler': 'cosine_with_warmup', 'params': {'learning_rate': '${optimizer.params.learning_rate}', 'warmup_steps': 100}}, 'training': {'gradient_accumulation_steps': 1, 'mixed_precision': 'no', 'seed': 42, 'num_epochs': 200}, 'config': 'cfg.yaml'}}
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [wandb_init.py:init():548] starting backend
+2024-01-27 23:33:42,372 INFO    MainThread:1223922 [backend.py:_multiprocessing_setup():97] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-01-27 23:33:42,376 INFO    MainThread:1223922 [backend.py:ensure_launched():217] starting backend process...
+2024-01-27 23:33:42,377 INFO    MainThread:1223922 [backend.py:ensure_launched():222] started backend process with pid: 1224100
+2024-01-27 23:33:42,378 INFO    MainThread:1223922 [wandb_init.py:init():558] backend started and connected
+2024-01-27 23:33:42,381 INFO    MainThread:1223922 [wandb_init.py:init():634] updated telemetry
+2024-01-27 23:33:42,384 INFO    MainThread:1223922 [wandb_init.py:init():665] communicating run to backend with 30 second timeout
+2024-01-27 23:33:43,098 INFO    MainThread:1223922 [wandb_run.py:_on_init():1919] communicating current version
+2024-01-27 23:33:43,227 INFO    MainThread:1223922 [wandb_run.py:_on_init():1923] got version response upgrade_message: "wandb version 0.16.2 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-01-27 23:33:43,228 INFO    MainThread:1223922 [wandb_init.py:init():700] starting run threads in backend
+2024-01-27 23:33:43,330 INFO    MainThread:1223922 [wandb_run.py:_console_start():1893] atexit reg
+2024-01-27 23:33:43,330 INFO    MainThread:1223922 [wandb_run.py:_redirect():1766] redirect: SettingsConsole.REDIRECT
+2024-01-27 23:33:43,330 INFO    MainThread:1223922 [wandb_run.py:_redirect():1771] Redirecting console.
+2024-01-27 23:33:43,331 INFO    MainThread:1223922 [wandb_run.py:_redirect():1827] Redirects installed.
+2024-01-27 23:33:43,331 INFO    MainThread:1223922 [wandb_init.py:init():732] run started, returning control to user process
+2024-01-27 23:33:43,807 INFO    MainThread:1223922 [wandb_run.py:_atexit_cleanup():1862] got exitcode: 1
+2024-01-27 23:33:43,814 INFO    MainThread:1223922 [wandb_run.py:_restore():1834] restore
+2024-01-27 23:33:45,848 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 759
+}
+
+2024-01-27 23:33:46,300 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 759
+}
+
+2024-01-27 23:33:47,107 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,208 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,309 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,410 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,511 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,612 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 759
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,713 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 785
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,814 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:47,915 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:48,016 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:48,117 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:48,218 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:48,319 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:48,621 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+
+2024-01-27 23:33:49,374 INFO    MainThread:1223922 [wandb_run.py:_on_finish():1991] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 5
+}
+pusher_stats {
+  uploaded_bytes: 10795
+  total_bytes: 10795
+}
+local_info {
+}
+
+2024-01-27 23:33:50,477 INFO    MainThread:1223922 [wandb_run.py:_footer_history_summary_info():3099] rendering history
+2024-01-27 23:33:50,477 INFO    MainThread:1223922 [wandb_run.py:_footer_history_summary_info():3131] rendering summary
+2024-01-27 23:33:50,479 INFO    MainThread:1223922 [wandb_run.py:_footer_sync_info():3055] logging synced files

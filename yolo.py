@@ -4,7 +4,7 @@ from einops import rearrange, reduce, repeat, pack
 from einops.layers.torch import Rearrange
 from torch import einsum
 from softmax_attention import SoftmaxAttention
-from experiments.agent_attention import AgentAttention	
+# from experiments.agent_attention import AgentAttention	
 from switchhead_attention import SwitchHeadAttention
 from torch.nn import functional as F
 import time
@@ -45,7 +45,7 @@ class SetCriterion(nn.Module):
         self.weight_dict = weight_dict
         self.eos_coef = eos_coef
         self.losses = losses
-        empty_weight = torch.ones(self.num_classes)
+        empty_weight = torch.ones(self.num_classes + 1)
         empty_weight[-1] = self.eos_coef
         self.register_buffer('empty_weight', empty_weight)
 
@@ -105,7 +105,34 @@ class SetCriterion(nn.Module):
         losses['loss_giou'] = loss_giou.sum() / num_boxes
         return losses
 
- 
+    def loss_masks(self, outputs, targets, indices, num_boxes):
+        """Compute the losses related to the masks: the focal loss and the dice loss.
+           targets dicts must contain the key "masks" containing a tensor of dim [nb_target_boxes, h, w]
+        """
+        assert "pred_masks" in outputs
+
+        src_idx = self._get_src_permutation_idx(indices)
+        tgt_idx = self._get_tgt_permutation_idx(indices)
+        src_masks = outputs["pred_masks"]
+        src_masks = src_masks[src_idx]
+        masks = [t["masks"] for t in targets]
+        # TODO use valid to mask invalid areas due to padding in loss
+        target_masks, valid = nested_tensor_from_tensor_list(masks).decompose()
+        target_masks = target_masks.to(src_masks)
+        target_masks = target_masks[tgt_idx]
+
+        # upsample predictions to the target size
+        src_masks = interpolate(src_masks[:, None], size=target_masks.shape[-2:],
+                                mode="bilinear", align_corners=False)
+        src_masks = src_masks[:, 0].flatten(1)
+
+        target_masks = target_masks.flatten(1)
+        target_masks = target_masks.view(src_masks.shape)
+        losses = {
+            "loss_mask": sigmoid_focal_loss(src_masks, target_masks, num_boxes),
+            "loss_dice": dice_loss(src_masks, target_masks, num_boxes),
+        }
+        return losses
 
     def _get_src_permutation_idx(self, indices):
         # permute predictions following indices
@@ -124,7 +151,7 @@ class SetCriterion(nn.Module):
             'labels': self.loss_labels,
             'cardinality': self.loss_cardinality,
             'boxes': self.loss_boxes,
-
+            'masks': self.loss_masks
         }
         assert loss in loss_map, f'do you really want to compute {loss} loss?'
         return loss_map[loss](outputs, targets, indices, num_boxes, **kwargs)
@@ -170,6 +197,7 @@ class SetCriterion(nn.Module):
                     losses.update(l_dict)
 
         return losses
+
 
 
 class HungarianMatcher(nn.Module):
@@ -242,8 +270,8 @@ class HungarianMatcher(nn.Module):
 		C = self.cost_bbox * cost_bbox + self.cost_class * cost_class  + self.cost_giou * cost_giou
 		C = C.view(bs, num_queries, -1).cpu()
 
-		#replace nan with 1
-		C[C != C] = 1
+		# #replace nan with 1
+		# C[C != C] = 1
 
 		sizes = [len(v["boxes"]) for v in targets]
 		indices = [linear_sum_assignment(c[i]) for i, c in enumerate(C.split(sizes, -1))]
@@ -351,7 +379,7 @@ class ViT(nn.Module):
 			nn.ReLU()
 		)
 
-		self.class_embed = nn.Linear(dim, num_classes)
+		self.class_embed = nn.Linear(dim, num_classes + 1)
 		
 	def forward(self, x):
 		# (batch_size, channels, height, width) --> (batch_size, timesteps, features)
@@ -378,18 +406,17 @@ class ViT(nn.Module):
 
 
 class YoloS(torch.nn.Module):
-	def __init__(self, dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=10):
+	def __init__(self, dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=91):
 		super(YoloS, self).__init__()
 
-		self.model = ViT(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2)
+		self.model = ViT(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=100, num_classes=num_classes)
 
-		self.matcher = build_matcher()
-		weight_dict = {'loss_ce': 1, 'loss_bbox': 1}
-		weight_dict['loss_giou'] = 1
+		matcher = build_matcher()
+		weight_dict = {'loss_ce': 1, 'loss_bbox': 5, 'loss_giou': 2}
 
 		losses = ['labels', 'boxes', 'cardinality']
-		self.criterion = SetCriterion(num_classes, matcher=self.matcher, weight_dict=weight_dict,
-							eos_coef=1, losses=losses)
+		self.criterion = SetCriterion(num_classes, matcher=matcher, weight_dict=weight_dict,
+							eos_coef=0.1, losses=losses)
 		
 	def forward(self, imgs, targets):	
 		boxes , logits = self.model(imgs)
@@ -397,17 +424,17 @@ class YoloS(torch.nn.Module):
 	
 		loss = self.criterion(outputs, targets)
 
-		return loss
+		return outputs, loss
 
 
-# imgs
-imgs = torch.randn(2, 3, 512, 512)
-# target
-targets = [{"labels": torch.randint(0, 10, (5,)), "boxes": torch.randint(0, 10, (5, 4)).float()} for _ in range(2)]
+# # imgs
+# imgs = torch.randn(2, 3, 512, 512)
+# # target
+# targets = [{"labels": torch.randint(0, 10, (5,)), "boxes": torch.randint(0, 10, (5, 4)).float()} for _ in range(2)]
 
-model = YoloS(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=10)
-loss = model(imgs, targets)
-print(loss)
+# model = YoloS(dim=1024, image_size=512, patch_size=32, n_heads=2, d_head=64, depth=6, max_dets=2, num_classes=10)
+# loss = model(imgs, targets)
+# print(loss)
 
 
 

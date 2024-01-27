@@ -1,0 +1,35 @@
+INFO:root:Train dataset size: 118287
+INFO:root:Val dataset size: 5000
+INFO:root:Number of iterations per epoch: 3697
+INFO:root:Total training iterations: 739400
+  0%|                                                                                                                                               | 0/3697 [00:00<?, ?it/s]INFO:root:Saving checkpoint: outputs/yolo/checkpoints/Yolo.pt ...
+
+  0%|                                                                                                                                     | 3/3697 [00:13<4:37:12,  4.50s/it]
+Traceback (most recent call last):
+  File "/home/pranoy/code/yolos/main.py", line 44, in <module>
+    trainer.train()
+  File "/home/pranoy/code/yolos/trainer.py", line 117, in train
+    for batch in train_dl:
+  File "/home/pranoy/cv/lib/python3.10/site-packages/tqdm/std.py", line 1178, in __iter__
+    for obj in iterable:
+  File "/home/pranoy/cv/lib/python3.10/site-packages/accelerate/data_loader.py", line 458, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1328, in _next_data
+    idx, data = self._get_data()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1294, in _get_data
+    success, data = self._try_get_data()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1132, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 122, in get
+    return _ForkingPickler.loads(res)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/multiprocessing/reductions.py", line 307, in rebuild_storage_fd
+    fd = df.detach()
+  File "/usr/lib/python3.10/multiprocessing/resource_sharer.py", line 58, in detach
+    return reduction.recv_handle(conn)
+  File "/usr/lib/python3.10/multiprocessing/reduction.py", line 189, in recv_handle
+    return recvfds(s, 1)[0]
+  File "/usr/lib/python3.10/multiprocessing/reduction.py", line 164, in recvfds
+    raise RuntimeError('received %d items of ancdata' %
+RuntimeError: received 0 items of ancdata

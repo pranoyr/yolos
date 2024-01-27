@@ -1,0 +1,43 @@
+INFO:root:Train dataset size: 118287
+INFO:root:Val dataset size: 5000
+INFO:root:Number of iterations per epoch: 14786
+INFO:root:Total training iterations: 2957200
+  0%|                                                                                                                                              | 0/14786 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/pranoy/code/yolos/main.py", line 44, in <module>
+    trainer.train()
+  File "/home/pranoy/code/yolos/trainer.py", line 117, in train
+    for batch in train_dl:
+  File "/home/pranoy/cv/lib/python3.10/site-packages/tqdm/std.py", line 1178, in __iter__
+    for obj in iterable:
+  File "/home/pranoy/cv/lib/python3.10/site-packages/accelerate/data_loader.py", line 448, in __iter__
+    current_batch = next(dataloader_iter)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1345, in _next_data
+    return self._process_data(data)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1371, in _process_data
+    data.reraise()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/_utils.py", line 644, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 265, in default_collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in collate
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 127, in collate
+    return elem_type({key: collate([d[key] for d in batch], collate_fn_map=collate_fn_map) for key in elem})
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 127, in <dictcomp>
+    return elem_type({key: collate([d[key] for d in batch], collate_fn_map=collate_fn_map) for key in elem})
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 119, in collate
+    return collate_fn_map[elem_type](batch, collate_fn_map=collate_fn_map)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/data/_utils/collate.py", line 162, in collate_tensor_fn
+    return torch.stack(batch, 0, out=out)
+RuntimeError: stack expects each tensor to be equal size, but got [1, 4] at entry 0 and [3, 4] at entry 1

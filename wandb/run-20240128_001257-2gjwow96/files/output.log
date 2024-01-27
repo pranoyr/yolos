@@ -1,0 +1,32 @@
+INFO:root:Train dataset size: 118287
+INFO:root:Val dataset size: 5000
+INFO:root:Number of iterations per epoch: 3697
+INFO:root:Total training iterations: 739400
+  0%|                                                                                                                                               | 0/3697 [00:00<?, ?it/s]INFO:root:Saving checkpoint: outputs/yolo/checkpoints/Yolo.pt ...
+  0%|                                                                                                                                               | 0/3697 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/pranoy/code/yolos/main.py", line 44, in <module>
+    trainer.train()
+  File "/home/pranoy/code/yolos/trainer.py", line 141, in train
+    self.evaluate()
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/pranoy/code/yolos/trainer.py", line 188, in evaluate
+    output , loss_dict = self.model(img, target)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/code/yolos/yolo.py", line 425, in forward
+    loss = self.criterion(outputs, targets)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/code/yolos/yolo.py", line 169, in forward
+    indices = self.matcher(outputs_without_aux, targets)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/pranoy/code/yolos/yolo.py", line 264, in forward
+    cost_bbox = torch.cdist(out_bbox, tgt_bbox, p=1)
+  File "/home/pranoy/cv/lib/python3.10/site-packages/torch/functional.py", line 1222, in cdist
+    return _VF.cdist(x1, x2, p, None)  # type: ignore[attr-defined]
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument x2 in method wrapper_CUDA___cdist_forward)

@@ -1,0 +1,26 @@
+{
+    "os": "Linux-6.5.0-14-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "heartbeatAt": "2024-01-27T18:20:28.834029",
+    "startedAt": "2024-01-27T18:20:27.749707",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [
+        "config=cfg.yaml"
+    ],
+    "state": "running",
+    "program": "/home/pranoy/code/yolos/main.py",
+    "codePath": "main.py",
+    "git": {
+        "remote": "git@github.com:pranoyr/yolos.git",
+        "commit": "acf5aa73e9f16f22c85a8610156f4da8438169b6"
+    },
+    "email": "pranoyalkr@gmail.com",
+    "root": "/home/pranoy/code/yolos",
+    "host": "pr-desktop1",
+    "username": "pranoy",
+    "executable": "/home/pranoy/cv/bin/python"
+}
