@@ -1007,3 +1007,35 @@
 2024-01-28 00:45:10,273 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
 2024-01-28 00:45:10,274 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
 2024-01-28 00:45:10,383 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:14,260 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: partial_history
+2024-01-28 00:45:14,261 DEBUG   SenderThread:1253609 [sender.py:send():236] send: history
+2024-01-28 00:45:14,261 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
+2024-01-28 00:45:14,261 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-28 00:45:14,383 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:14,384 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/output.log
+2024-01-28 00:45:18,236 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: partial_history
+2024-01-28 00:45:18,236 DEBUG   SenderThread:1253609 [sender.py:send():236] send: history
+2024-01-28 00:45:18,236 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
+2024-01-28 00:45:18,237 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-28 00:45:18,384 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:22,209 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: stop_status
+2024-01-28 00:45:22,209 DEBUG   SenderThread:1253609 [sender.py:send_request():250] send_request: stop_status
+2024-01-28 00:45:22,215 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: partial_history
+2024-01-28 00:45:22,385 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/output.log
+2024-01-28 00:45:22,548 DEBUG   SenderThread:1253609 [sender.py:send():236] send: history
+2024-01-28 00:45:22,548 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
+2024-01-28 00:45:22,549 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-28 00:45:23,386 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:26,194 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: partial_history
+2024-01-28 00:45:26,194 DEBUG   SenderThread:1253609 [sender.py:send():236] send: history
+2024-01-28 00:45:26,194 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
+2024-01-28 00:45:26,195 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-28 00:45:26,386 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:26,386 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/output.log
+2024-01-28 00:45:30,174 DEBUG   HandlerThread:1253609 [handler.py:handle_request():140] handle_request: partial_history
+2024-01-28 00:45:30,174 DEBUG   SenderThread:1253609 [sender.py:send():236] send: history
+2024-01-28 00:45:30,174 DEBUG   SenderThread:1253609 [sender.py:send():236] send: summary
+2024-01-28 00:45:30,174 INFO    SenderThread:1253609 [sender.py:_save_file():952] saving file wandb-summary.json with policy end
+2024-01-28 00:45:30,310 DEBUG   SenderThread:1253609 [sender.py:send():236] send: stats
+2024-01-28 00:45:30,387 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/wandb-summary.json
+2024-01-28 00:45:30,387 INFO    Thread-7  :1253609 [dir_watcher.py:_on_file_modified():286] file/dir modified: /home/pranoy/code/yolos/wandb/run-20240128_003456-3oiw0ki4/files/output.log
