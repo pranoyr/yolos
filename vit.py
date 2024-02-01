@@ -76,9 +76,9 @@ class EncoderLayer(nn.Module):
 	def __init__(self, dim, n_heads, d_head, dropout):
 		super().__init__()
 
-		self.self_attn = SwitchHeadAttention(dim, n_heads, d_head, dropout=dropout)
+		self.self_attn = SoftmaxAttention(dim, n_heads, d_head, dropout=dropout)
 		self.feed_forward = FeedForward(dim, hidden_dim=3072)
-		self.moe = MoELayer(input_dim=dim,  output_dim=dim, num_experts=6, sel_experts=2)
+		#self.moe = MoELayer(input_dim=dim,  output_dim=dim, num_experts=6, sel_experts=2)
 		self.norm1 = nn.LayerNorm(dim)
 		self.norm2 = nn.LayerNorm(dim)
 		
@@ -92,8 +92,8 @@ class EncoderLayer(nn.Module):
 		x_norm = self.norm2(x)
 
 		# feed forward
-		# fc_out = self.feed_forward(x_norm)
-		fc_out = self.moe(x_norm)
+		fc_out = self.feed_forward(x_norm)
+		#fc_out = self.moe(x_norm)
 
 		# ADD
 		x = fc_out + x
@@ -102,7 +102,7 @@ class EncoderLayer(nn.Module):
 
 
 class ViT(nn.Module):
-	def __init__(self, dim, image_size=256, patch_size = 16, n_heads = 8, d_head = 64, depth = 6, max_dets = 100, num_classes = 91):
+	def __init__(self, dim=512, image_size=512, patch_size = 16, n_heads = 8, d_head = 64, depth = 6, max_dets = 100, num_classes = 1000):
 		super(ViT, self).__init__()
 		
 		self.dim = dim
@@ -168,8 +168,8 @@ class ViT(nn.Module):
 		return x
 
 
-x = torch.randn(2, 3, 512, 512)
-model = ViT(dim=512, image_size=512, patch_size=16, n_heads=8, d_head=64, depth=6, max_dets=100, num_classes=91)
-model.eval()
-x = model(x)
-print(x.shape)
+# x = torch.randn(2, 3, 512, 512)
+# model = ViT(dim=512, image_size=512, patch_size=16, n_heads=8, d_head=64, depth=6, max_dets=100, num_classes=91)
+# model.eval()
+# x = model(x)
+# print(x.shape)
