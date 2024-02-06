@@ -23,6 +23,20 @@ from torch import nn
 
 from util.box_ops import box_cxcywh_to_xyxy, generalized_box_iou
 
+class MLP(nn.Module):
+    """ Very simple multi-layer perceptron (also called FFN)"""
+
+    def __init__(self, input_dim, hidden_dim, output_dim, num_layers):
+        super().__init__()
+        self.num_layers = num_layers
+        h = [hidden_dim] * (num_layers - 1)
+        self.layers = nn.ModuleList(nn.Linear(n, k) for n, k in zip([input_dim] + h, h + [output_dim]))
+
+    def forward(self, x):
+        for i, layer in enumerate(self.layers):
+            x = F.relu(layer(x)) if i < self.num_layers - 1 else layer(x)
+        return x
+
 
 class SetCriterion(nn.Module):
 	""" This class computes the loss for DETR.
@@ -404,11 +418,7 @@ class ViT(nn.Module):
 		
   
 
-		self.box_embeds = nn.Sequential(
-			nn.LayerNorm(dim),
-			nn.Linear(dim, 4),
-			nn.ReLU()
-		)
+		self.bbox_embeds = MLP(dim, dim, 4, 3)
 
 		self.class_embeds = nn.Linear(dim, num_classes+1)
 		
@@ -437,7 +447,7 @@ class ViT(nn.Module):
 
     
   
-		boxes = self.box_embeds(x)
+		boxes = self.bbox_embeds(x).sigmoid()
 		logits = self.class_embeds(x)
 
 		return boxes, logits
